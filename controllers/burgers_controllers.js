@@ -13,11 +13,11 @@ router.get("/", function(req, res) {
     });
 });
 
-router.prototype("/api/burgers", function(req, res) {
+router.post("/api/burgers", function(req, res) {
     burger.create([
-        "burger_name", "burger_number"
+        "name", "sleepy"
     ], [
-        req.body.name, req.body.burger_number
+        req.body.name, req.body.sleepy
     ], function(result) {
         res.json({ id: result.insertId });
     });
@@ -29,7 +29,7 @@ router.put("/api/burgers/:id", function(req, res) {
 
     burger.update({
         devoured: req.body.devoured
-    }, condition,, function(result) {
+    }, condition, function(result) {
         if(result.changedRows == 0) {
             return res.status(404).end();
         } else {
